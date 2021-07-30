@@ -11,6 +11,10 @@ class InputBox extends React.Component {
         // console.log(this.state.value);
         // console.log("This will run just any way")
     }
+
+    clear(){
+        this.setState({value:''});
+    }
     handleChange(e) {
         this.setState({value: e.target.value});
         console.log(this.state.value)//to print the value of input as typed
@@ -21,20 +25,26 @@ class InputBox extends React.Component {
     
 
     handleKeyUp(e) {
-        if (e.keyCode === KeyCode.KEY_RETURN) {
-            // Add new Todo Here
-            // Clear the text box
+        const{addNew}=this.props;
+        const text=this.state.value.trim();
+        if (e.keyCode === KeyCode.KEY_RETURN && text) {
+
+            addNew(text);          // Add new Todo Here
+            this.clear();          // Clear the text box
+            
             // console.log(this.state.value)//to print the value of input
         }
     }
 
     render() {
-        return (<input type="text"
+        return (<input 
+            type="text"
             className="form-control add-todo"
             value={this.state.value}
             onKeyUp={this.handleKeyUp.bind(this)}
             onChange={this.handleChange.bind(this)}
-            placeholder="Add New"/>);
+            placeholder="Add New"
+            />);
     }
 }
 
