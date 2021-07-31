@@ -31,7 +31,7 @@ li.ui-state-default{
 
 .todo-footer {
     border-top: 1px solid #ddd;
-    background-color: #e7dadc;
+    background-color: #e0b09d;
     margin: 0 -20px -10px -20px;
     padding: 10px 20px;
     position: relative;
@@ -68,3 +68,9 @@ li.ui-state-default{
 .mark-all-done {
     margin-top: 10px;
 } 
+
+.alert{
+    border: 1px solid #ddd;
+    margin:10px 0;
+    padding: 10px;
+}

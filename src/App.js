@@ -1,30 +1,16 @@
 import React,{Component} from 'react';
-import logo from './logo.svg';
 import './App.css';
 import TodoList from './components/TodoList';
+import {FILTER_ACTIVE} from './services/filter';
+import {getAll, addToList} from './services/todo';
 
 
 class App extends Component {
   constructor() {
       super();
       this.state = {
-          items: [
-              {
-                  id: 1,
-                  text: 'Learn Javascript',
-                  completed: false
-              },
-              {
-                  id: 2,
-                  text: 'Learn React',
-                  completed: false
-              },
-              {
-                  id: 3,
-                  text: 'Build a React App',
-                  completed: false
-              }
-          ]
+          filter:'FILTER_ACTIVE',
+        items: getAll()
       }
     }
 
@@ -36,21 +22,19 @@ class App extends Component {
               <div className="row">
                   <TodoList title={title} 
                   addNew={this.addNew.bind(this)} 
-                  items={this.state.items}/>
+                  changeFilter={this.changeFilter.bind(this)}
+                  {...this.state}
+                  />
               </div>
           </div>
   );
   }
   addNew(text){
-      let nextId=this.state.items.length+1
-      let item={
-          id:this.state.items.length+1,
-          text:text
-      };
-      let updatedList=this.state.items.concat([item]);
-      this.setState({
-          items:updatedList
-      })
+      let updatedList=addToList(this.state.items,{ text, completed:false});
+      this.setState({items:updatedList})
+  }
+  changeFilter(filter){
+      this.setState({filter});
   }
 }
 
