@@ -2,6 +2,10 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+ My site is published at https://ankpan18.github.io/notes/
+ It is Version 1.0 with some bugs including all checkbox ticked.
+
+
 ## Available Scripts
 
 In the project directory, you can run:
