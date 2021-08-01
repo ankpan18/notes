@@ -1,3 +1,4 @@
+
 export function getAll(){
 return [
     {
@@ -16,6 +17,19 @@ return [
         completed: false
     }
 ]
+}
+
+export function getItemById(itemId) {
+    return getAll().find(item => item.id === itemId);
+}
+export function updateStatus(items, itemId, completed) {
+    let index = items.findIndex(item => item.id === itemId);
+    // Returns a new list of data with updated item.
+    return updateStatus(items, {
+        [index]: {
+            completed: {$set: completed}
+        }
+    });
 }
 
 let todoCounter=1;

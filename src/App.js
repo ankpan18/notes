@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 import './App.css';
 import TodoList from './components/TodoList';
 import {FILTER_ACTIVE} from './services/filter';
-import {getAll, addToList} from './services/todo';
+import {getAll, addToList, updateStatus} from './services/todo';
 
 
 class App extends Component {
@@ -35,6 +35,11 @@ class App extends Component {
   }
   changeFilter(filter){
       this.setState({filter});
+  }
+
+  changeStatus(itemId, completed){
+      const updatedList=updateStatus(this.state.items, itemId, completed);
+      this.setState({items:updatedList});
   }
 }
 
